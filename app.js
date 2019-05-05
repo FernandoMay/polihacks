@@ -117,6 +117,10 @@ var platform = new H.service.Platform({
             console.log(d);
         });
 
+        firebase.database().ref('/posts').on('value', function(snapshot) {
+            console.log(snapshot.val());
+        });
+
     }
     
       
