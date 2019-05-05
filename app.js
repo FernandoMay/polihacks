@@ -105,19 +105,17 @@ var platform = new H.service.Platform({
         }).catch(function(error) {
           console.error("Error adding document: ", error);
         });  
+        ref.on("child_added", function(snapshot){
+            console.log('ddddmdmmdmdmd');
+        });
+        var ref = db.ref("users");
 
-        var ref = firebase.database().ref("users");
-        ref.once("value")
-        .then(function(snapshot) {
-            var denuncia = snapshot.child("denuncia").val(); // {first:"Ada",last:"Lovelace"}
-            document.write(`<div class="section container">
-            <div class="card">
-                <div class="card-body"><p>`+denuncia+`</p>
-                </div>
-            </div>
-        </div>`);
-            
-  });   
+        var tabla=document.getElementById("laspublicaciones");
+        ref.innerHTML="";
+        ref.on("child_added", function(snapshot){
+            var d = snapshot.val();
+            console.log(d);
+        });
 
     }
     
