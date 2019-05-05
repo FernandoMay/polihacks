@@ -90,7 +90,7 @@ var platform = new H.service.Platform({
       }
 
         
-      var recibido=document.getElementById(denuncia);
+      var recibido=document.getElementById('denuncia');
       console.log(recibido);
 
     function publicar(recibido) {
