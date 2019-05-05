@@ -1,69 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="./w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="./index.css">
+<html>
+  <head>
+  <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+  <title>Ollimpus</title>
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-core.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="http://js.api.here.com/v3/3.0/mapsjs-service.js"
+  type="text/javascript" charset="utf-8"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.9.1/firebase.js"></script>
+  <script type="text/javascript" src="libs/hereAppIdAndToken.js"></script>
+  <!-- Bootstrap jQuery Library -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="./w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./index.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-.fa-anchor,.fa-coffee {font-size:200px}
-a:hover{background-color: #048888}
-</style>
-<body>
-  
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-black w3-card w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large " href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black"><img class="mlogo" src="./Imagenes/logo.png" alt=""></a>
-    <a href="./Denuncia.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large ">Denuncia</a>
-    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large ">Mapa</a>
-  </div>
+  <style>
+    body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+    .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+    .fa-anchor,.fa-coffee {font-size:200px}
+    a:hover{background-color: #048888}
+    </style>
+  <script type="text/javascript" src="libs/jQl.min.js"></script>
 
-  <!-- Navbar on small screens -->
-  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
-    <a href="#" class="w3-bar-item w3-button w3-padding-large azul">Denuncia</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large">Mapa</a>
-  </div>
-</div>
-
-<!-- Header -->
-<header class="w3-container w3-red w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Ollimpus</h1>
-  <p class="w3-xlarge">Hackaton 2019</p>
-</header>
-
-<!-- First Grid -->
-<div class="w3-row-padding w3-padding-64 w3-container">
-  <div class="w3-content">
-    <div class="w3-twothird">
-      <h1>Descripción</h1>
-      <h5 class="w3-padding-32">Ollimpus es un plataforma dedicada a la seguridad de las personas en la ciudad de México. Se analizan las zonas con mayor vulnerabilidad y se muestran .</h5>
-    </div>
-
-    <div class=" w3-center">
-      <img class="logo" src="./Imagenes/logo.png" alt="">
-    </div>
-  </div>
-</div>
-
+  <!-- Asynchronously the HERE Maps API for JavaScript -->
+  <script type="text/javascript" src="libs/hereAsyncLoader.js"
+    id="HereMapsLoaderScript"
+    data-map-container="mapContainer"
+    data-params="maps"
+    data-callback="addMarkerToMap" >
+  </script>
+  <link rel="icon" href="http://here.com/favicon.ico"/>
 <script>
-// Used to toggle the menu on small screens when clicking on the menu button
-function myFunction() {
-  var x = document.getElementById("navDemo");
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+  // Initialize Firebase
+  // TODO: Replace with your project's customized code snippet
+  var config = {
+    apiKey: "AlzaSyAdlqqKHrLmFTsVkq22aGZrrCMnklmllzw",
+    authDomain: "ollimpus26.firebaseapp.com",
+    databaseURL: "https://ollimpus26.firebaseio.com",
+    projectId: "ollimpus26",
+    storageBucket: "ollimpus26.appspot.com",
+  };
+  firebase.initializeApp(config);
 </script>
+  </head>
+  <body>
+    <div class="w3-top">
+      <div class="w3-bar w3-black w3-card w3-left-align w3-large">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-large " href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+        <a href="./index.html" class="w3-bar-item w3-button w3-padding-large w3-black"><img class="mlogo" src="./logo.png" alt=""><img src="" alt=""></a>
+        <a href="./Denuncia.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large ">Denuncia</a>
+        <a href="./mapas.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large ">Mapa</a>
+      </div>
+    
+      <!-- Navbar on small screens -->
+      <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+        <a href="./Denuncia.html" class="w3-bar-item w3-button w3-padding-large azul">Denuncia</a>
+        <a href=./mapas.html class="w3-bar-item w3-button w3-padding-large">Mapa</a>
+      </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="w3-container w3-red w3-center" style="padding:128px 16px">
+      <h1 class="w3-margin w3-jumbo">Ollimpus</h1>
+      <p class="w3-xlarge">Polihacks 2019</p>
+    </header>
+    
+    <!-- First Grid -->
+    <div class="w3-row-padding w3-padding-64 w3-container">
+      <div class="w3-content row">
+        <div class="col-xl-8 col-lg-7 col-md-6 col-sm-6 col-12">
+          <h3 class="w3-center w3-padding-32">Ollimpus es un plataforma dedicada a la seguridad de las personas en la ciudad de México. Se analizan las zonas con mayor vulnerabilidad y se muestran .</h3>
+        </div>
+        <div class="w3-center col-xl-4 col-lg-5 col-md-6 col-sm-6 col-12">
+          <img class="logo" src="./logo.png" alt="">
+        </div>
+      </div>
+    </div>
+    
 
-</body>
+    <!-- Footer -->
+<!-- Footer -->
+<footer style="background-color:#233535" class="text-white page-footer font-small blue pt-4">
+
+  <!-- Footer Links -->
+  <div class="container-fluid text-center">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase">Ollimpus fue desarrollada con amor.</h5>
+        <p>Coman frutas y verduras.</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+      <!-- Grid column -->
+      
+        <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2019 Copyright: Ollimpus
+    
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+ 
+ <script src="app.js"></script>
+  </body>
 </html>

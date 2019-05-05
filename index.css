@@ -3,7 +3,7 @@
   }
 
 .w3-container.w3-red.w3-center {
-    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)),  url(./Imagenes/inicio.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)),  url(./inicio.jpg);
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
