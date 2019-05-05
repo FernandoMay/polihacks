@@ -93,21 +93,31 @@ var platform = new H.service.Platform({
       var recibido=document.getElementById('denuncia');
       console.log(recibido);
 
-    function publicar(recibido) {
+    function publicar() {
+        var recibido=document.getElementById('denuncia');
+        console.log(recibido);
         var db = firebase.firestore();
 
-        db.collection("delitos").add({
-          denuncia: recibido
+        db.collection("users").add({
+          denuncia: recibido.value
         }).then(function(docRef) {
           console.log("Document written with ID: ", docRef.id);
         }).catch(function(error) {
           console.error("Error adding document: ", error);
         });  
 
-        db.collection("cities").doc("SF")
-    .onSnapshot(function(doc) {
-        console.log("Current data: ", doc.data());
-    });
+        var ref = firebase.database().ref("users");
+        ref.once("value")
+        .then(function(snapshot) {
+            var denuncia = snapshot.child("denuncia").val(); // {first:"Ada",last:"Lovelace"}
+            document.write(`<div class="section container">
+            <div class="card">
+                <div class="card-body"><p>`+denuncia+`</p>
+                </div>
+            </div>
+        </div>`);
+            
+  });   
 
     }
     
