@@ -8,16 +8,16 @@ var platform = new H.service.Platform({
         var zIndex = 1,
             // create a set of markers
             marker = new mapsjs.map.Marker(
-              {lat: 52.508249, lng: 13.338931}
+                {lat: 19.5133, lng: -99.1233}
             ),
             marker2 = new mapsjs.map.Marker(
-              {lat: 52.506682, lng: 13.332107}
+                {lat: 19.5236, lng: -99.102}
             ),
             marker3 = new mapsjs.map.Marker(
-              {lat: 52.503730, lng: 13.331678}
+                {lat: 19.5112, lng: -99.1233}
             ),
             marker4 = new mapsjs.map.Marker(
-              {lat: 52.531, lng: 13.380}
+                {lat: 19.51, lng: -99.12}
             );
       
         // add markers to the map
@@ -43,8 +43,8 @@ var platform = new H.service.Platform({
       
       var map = new H.Map(document.getElementById('map'),
         defaultLayers.normal.map,{
-        center: {lat: 52.5, lng: 13.4},
-        zoom: 10,
+        center: {lat: 19.51, lng: -99.12},
+        zoom: 13,
         pixelRatio: pixelRatio
       });
       var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
