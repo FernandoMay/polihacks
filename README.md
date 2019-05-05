@@ -1,4 +1,4 @@
 # polihacks
 Ollimpus
 
-https://ollimpus.com
+http://ollimpus.com
