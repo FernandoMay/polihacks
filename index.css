@@ -1,0 +1,46 @@
+.w3-button{
+    background-image:url(imagen.jpg);
+  }
+
+.w3-container.w3-red.w3-center {
+    background-image: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)),  url(./Imagenes/inicio.jpg);
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.w3-button:hover{
+    background-color: #048888;
+}
+
+.logo{
+ width:200px;
+ height: 200px;
+}
+
+.mlogo{
+    width: 30px;
+    height: 30px;
+   }
+
+.body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-f{
+    
+}
+
+.letra{
+    font-family: "Lato", sans-serif;
+    font-size: 30px;
+}
+
+.tamanioinput{
+    width: 800px;
+    height: 300px;
+}
